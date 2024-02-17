@@ -1,12 +1,13 @@
-// {
-//     "extends": "eslint:recommended"
-// }
+module.exports = {
+  extends: [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
+  plugins: ["cypress"],
+};
 
-{
-  {
-    "next/core-web-vitals", "eslint:recommended", "prettier";
-  }
-}
 // module.exports = {
 //   env: {
 //     browser: true,
