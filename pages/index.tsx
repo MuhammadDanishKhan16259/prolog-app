@@ -26,6 +26,7 @@ const Container = styled.div<ContainerProps>`
 //   ${(props) => props.theme === "dark" && "background: black"}
 // `;
 export default function Home() {
+  const a = "b":
   return (
     <>
       <Container theme="Light">
