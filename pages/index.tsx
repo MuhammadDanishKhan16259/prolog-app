@@ -6,6 +6,7 @@ import styles from "../styles/Home.module.css";
 // import styles from "@/styles/ConstructPage.module.css";
 
 import styled from "styled-components";
+import { SidebarNavigation } from "../components/SidebarNavigation";
 
 const inter = Inter({ subsets: ["latin"] });
 type ContainerProps = {
@@ -16,6 +17,47 @@ const Container = styled.div<ContainerProps>`
   padding: 0 2rem;
   ${(props) => props.theme === "dark" && "background: black"}
 `;
+
+const Main = styled.main`
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const Footer = styled.footer`
+display: flex;
+flex: 1;
+padding: 2ren 0;
+border-top: 1px solid #eaeaea
+justify-content: center;
+align-items: center;
+
+a{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-grow: 1;
+}
+`;
+
+const Title = styled.h1`
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4ren;
+  text-align: center;
+  a {
+    color: #0870f3;
+    text-decoration: none;
+  }
+  a:hover,
+  a:focus,
+  a:active {
+    text-decoration: underline;
+  }
+`;
 export default function Home() {
   // const a = "b":
   return (
@@ -24,7 +66,6 @@ export default function Home() {
         <Head>
           <h1>
             Welcome <a href="https://nextjs.org"> to Prolong APP !</a>
-            Welcome <a href="https://nextjs.org"> to Prolong APP ! </a>
           </h1>
           <title>Create Next App</title>
 
@@ -33,6 +74,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={`${styles.main} ${inter.className}`}>
+          <SidebarNavigation />
           <div className={styles.description}>
             <p>
               Get started by editing&nbsp;
