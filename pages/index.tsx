@@ -6,13 +6,8 @@ import styles from "../styles/Home.module.css";
 // import styles from "@/styles/ConstructPage.module.css";
 
 import styled from "styled-components";
-// import { Container } from "react-dom";
 
 const inter = Inter({ subsets: ["latin"] });
-// const Container = styled.div`
-//   padding: 0 2rem; ${(props) =>
-//     props.theme.background}; /* Access background from props.theme */
-// `;
 type ContainerProps = {
   theme: string;
 };
@@ -21,11 +16,8 @@ const Container = styled.div<ContainerProps>`
   padding: 0 2rem;
   ${(props) => props.theme === "dark" && "background: black"}
 `;
-// const Container = styled.div<ContainerProps>`
-//   padding: 0 2rem;
-//   ${(props) => props.theme === "dark" && "background: black"}
-// `;
 export default function Home() {
+  // const a = "b":
   return (
     <>
       <Container theme="Light">
