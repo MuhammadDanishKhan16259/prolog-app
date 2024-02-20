@@ -23,7 +23,7 @@ export default function Home() {
       <Container theme="Light">
         <Head>
           <h1>
-            Welcome <a href="https://nextjs.org"> to Prolong APP </a>
+            Welcome <a href="https://nextjs.org"> to Prolong APP !</a>
           </h1>
           <title>Create Next App</title>
           <h1>Welcome</h1>
