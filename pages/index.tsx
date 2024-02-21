@@ -6,6 +6,7 @@ import styles from "../styles/Home.module.css";
 // import styles from "@/styles/ConstructPage.module.css";
 
 import styled from "styled-components";
+import { SidebarNavigation } from "../componenets/SidebarNavigation";
 // import { Container } from "react-dom";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +27,6 @@ const Container = styled.div<ContainerProps>`
 //   ${(props) => props.theme === "dark" && "background: black"}
 // `;
 export default function Home() {
-  const a = "b":
   return (
     <>
       <Container theme="Light">
@@ -41,6 +41,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={`${styles.main} ${inter.className}`}>
+          <SidebarNavigation />
           <div className={styles.description}>
             <p>
               Get started by editing&nbsp;
