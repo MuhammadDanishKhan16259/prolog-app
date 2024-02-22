@@ -1,48 +1,58 @@
-import Link from "next/link";
+// import Link from "next/link";
+import styled from "styled-components";
+import { MenuItem } from "./MenuItem";
 
 const menuItems = [
   {
     text: "Projects",
-    icon: null,
+    iconSrc: "/icons/projects.svg",
     href: "#",
   },
   {
     text: "Issues",
-    icon: null,
+    iconSrc: "/icons/issues.svg",
     href: "#",
   },
 
   {
     text: "Alerts",
-    icon: null,
+    iconSrc: "/icons/alert.svg",
     href: "#",
   },
   {
     text: "Users",
-    icon: null,
+    iconSrc: "/icons/users.svg",
     href: "#",
   },
   {
     text: "Settings",
-    icon: null,
+    iconSrc: "/icons/settings.svg",
     href: "#",
   },
 ];
+const Nav = styled.nav`
+  width: 280px;
+  height: 100vh;
+  background: #101828;
+`;
+
+const List = styled.ul`
+  list-style: none;
+  padding: 0 16px;
+`;
 
 export function SidebarNavigation() {
   return (
-    <nav>
-      <ul>
-        {menuItems.map(({ text, href }, index) => (
-          <li key={index}>
-            <Link href={href}>{text}</Link>
-          </li>
+    <Nav>
+      <List>
+        {menuItems.map((menuItem, index) => (
+          <MenuItem key={index} {...menuItem} />
         ))}
-      </ul>
-      <ul>
+      </List>
+      <List>
         <li>Support</li>
         <li>Collapse</li>
-      </ul>
-    </nav>
+      </List>
+    </Nav>
   );
 }
