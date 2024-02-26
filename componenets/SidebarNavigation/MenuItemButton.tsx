@@ -1,11 +1,11 @@
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 type MenuItemProps = {
   text: string;
-  href: string;
-  // icon: React.ReactNode;
+  // href?: string;
   iconSrc: string;
+  onClick: () => void;
 };
 
 const ListItem = styled.li`
@@ -18,7 +18,13 @@ const ListItem = styled.li`
 //   text-decoration: none;
 // `;
 
-const Anchor = styled.div`
+// const Anchor = styled.div`
+//   display: flex;
+//   align-items: center;
+//   color: #f2f4f7;
+//   text-decoration: none;
+// `;
+const Button = styled.div`
   display: flex;
   align-items: center;
   color: #f2f4f7;
@@ -28,15 +34,15 @@ const Icon = styled.img`
   margin-right: 12px;
 `;
 
-export function MenuItem({ text, href, iconSrc }: MenuItemProps) {
+export function MenuItemButton({ text, onClick, iconSrc }: MenuItemProps) {
   return (
     <ListItem>
       {/* Use a div instead of a Link */}
       <div>
-        <Anchor>
+        <Button onClick={onClick}>
           <Icon src={iconSrc} alt={`${text} icon`} />
           {text}
-        </Anchor>
+        </Button>
       </div>
     </ListItem>
   );
