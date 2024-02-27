@@ -33,23 +33,34 @@ const menuItems = [
 ];
 const Nav = styled.nav`
   width: 280px;
-  height: 100vh;
+  height: calc(100vh - 2 * 32px);
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
   background: #101828;
 `;
-
+const Logo = styled.img`
+  width: 180px;
+  margin: 0px 12px 24px;
+`;
 const List = styled.ul`
   list-style: none;
-  padding: 0 16px;
+  padding: 0;
+  margin: 0;
 `;
 
+const LinkList = styled(List)`
+  flex: 1;
+`;
 export function SidebarNavigation() {
   return (
     <Nav>
-      <List>
+      <Logo src="/icons/logo-large.svg" alt="Logo" />
+      <LinkList>
         {menuItems.map((menuItem, index) => (
           <MenuItemLink key={index} {...menuItem} />
         ))}
-      </List>
+      </LinkList>
       <List>
         <MenuItemButton
           text="Support"
