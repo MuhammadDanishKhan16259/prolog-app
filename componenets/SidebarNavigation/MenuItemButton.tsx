@@ -11,19 +11,6 @@ type MenuItemProps = {
 const ListItem = styled.li`
   padding: 8px 12px;
 `;
-// const Anchor = styled.a`
-//   display: flex;
-//   align-items: center;
-//   color: #f2f4f7;
-//   text-decoration: none;
-// `;
-
-// const Anchor = styled.div`
-//   display: flex;
-//   align-items: center;
-//   color: #f2f4f7;
-//   text-decoration: none;
-// `;
 const Button = styled.div`
   display: flex;
   align-items: center;
@@ -47,22 +34,3 @@ export function MenuItemButton({ text, onClick, iconSrc }: MenuItemProps) {
     </ListItem>
   );
 }
-// export function MenuItem({ text, href, iconSrc }: MenuItemProps) {
-//   return (
-//     <ListItem>
-//       <Link href={href} passHref>
-//         <Anchor>
-//           <Icon src={iconSrc} alt={`${text} icon`} />
-//           {text}
-//         </Anchor>
-//       </Link>
-//     </ListItem>
-//   );
-// }
-{
-  /* <Icon src={iconSrc} alt={`${text} icon`} />
-{text} */
-}
-// <li href={index}>
-// <Link href={href}>{text}</Link>
-// </li>
