@@ -21,14 +21,6 @@ const ListItem = styled.li<{ isActive: boolean }>`
     margin-top: 0;
   }
 `;
-// background: ${props = > props.isActive ? '#344054':'transparent'};
-// const Anchor = styled.a`
-//   display: flex;
-//   align-items: center;
-//   color: #f2f4f7;
-//   text-decoration: none;
-// `;
-
 const Anchor = styled.div`
   display: flex;
   align-items: center;
