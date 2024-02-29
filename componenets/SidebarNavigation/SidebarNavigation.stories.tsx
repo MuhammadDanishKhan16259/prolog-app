@@ -41,7 +41,6 @@
 // );
 // export const Default = Template.bind({});
 // Default.args = {};
-
 import { Meta, StoryObj } from "@storybook/react";
 import { SidebarNavigation } from "./SidebarNavigation";
 
@@ -59,3 +58,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+// import { Meta, StoryObj } from "@storybook/react";
+// import { SidebarNavigation } from "./SidebarNavigation";
+
+// const meta: Meta = {
+//   title: "UI/SidebarNavigation",
+//   component: SidebarNavigation,
+//   tags: ["autodocs"],
+//   parameters: {
+//     layout: "fullscreen",
+//   },
+// };
+
+// export default meta;
+
+// type Story = StoryObj<typeof meta>;
+
+// export const Default: Story = {};

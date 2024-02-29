@@ -5,6 +5,7 @@ import { MenuItemButton } from "./MenuItemButton";
 import { Routes } from "../../config/routes";
 import { useRouter } from "next/router";
 import common from "mocha/lib/interfaces/common";
+import { useState } from "react";
 
 const menuItems = [
   {
@@ -34,16 +35,19 @@ const menuItems = [
     href: Routes.settings,
   },
 ];
-const Nav = styled.nav`
-  width: 248px;
+const Nav = styled.nav<{ isCollapsed: boolean }>`
+  width: ${(props) => (props.isCollapsed ? "50px" : "248px")};
+
+  /* width: 248px; */
   height: calc(100vh - 2 * 32px);
   padding: 32px 16px;
   display: flex;
   flex-direction: column;
   background: #101828;
 `;
-const Logo = styled.img`
-  width: 118px;
+const Logo = styled.img<{ isCollapsed: boolean }>`
+  width: ${(props) => (props.isCollapsed ? "23px" : "118px")};
+  /* width: 118px; */
   margin: 0px 12px 24px;
 `;
 const List = styled.ul`
@@ -57,15 +61,20 @@ const LinkList = styled(List)`
 `;
 export function SidebarNavigation() {
   const router = useRouter();
-  console.log(router);
+  const [isCollapsed, setCollapsed] = useState(false);
+  // console.log(router);
   return (
-    <Nav>
-      <Logo src="/icons/logo-large.svg" alt="Logo" />
+    <Nav isCollapsed={isCollapsed}>
+      <Logo
+        src={isCollapsed ? "/icons/logo-small.svg" : "/icons/logo-large.svg"}
+        isCollapsed={isCollapsed}
+      />
       <LinkList>
         {menuItems.map((menuItem, index) => (
           <MenuItemLink
             key={index}
             {...menuItem}
+            isCollapsed={isCollapsed}
             isActive={router.pathname === menuItem.href}
           />
         ))}
@@ -74,14 +83,18 @@ export function SidebarNavigation() {
         <MenuItemButton
           text="Support"
           iconSrc="/icons/support.svg"
+          isCollapsed={isCollapsed}
           onClick={() => alert("Support")}
         />
         <MenuItemButton
           text="Collapse"
           iconSrc="/icons/arrow-left.svg"
-          onClick={() => alert("Collapse")}
+          isCollapsed={isCollapsed}
+          onClick={() => setCollapsed(!isCollapsed)}
         />
       </List>
     </Nav>
   );
 }
+
+// onClick={() => alert("Collapse")}

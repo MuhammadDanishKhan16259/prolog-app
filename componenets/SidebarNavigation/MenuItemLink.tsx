@@ -6,6 +6,7 @@ type MenuItemProps = {
   href?: string;
   iconSrc: string;
   isActive: boolean;
+  isCollapsed: boolean;
   // onClick: () => void;
 };
 
@@ -31,14 +32,20 @@ const Icon = styled.img`
   margin-right: 12px;
 `;
 
-export function MenuItemLink({ text, href, iconSrc, isActive }: MenuItemProps) {
+export function MenuItemLink({
+  text,
+  href,
+  iconSrc,
+  isActive,
+  isCollapsed,
+}: MenuItemProps) {
   return (
     <ListItem isActive={isActive}>
       {/* Use a div instead of a Link */}
       <div>
         <Anchor>
           <Icon src={iconSrc} alt={`${text} icon`} />
-          {text}
+          {!isCollapsed && text}
         </Anchor>
       </div>
     </ListItem>

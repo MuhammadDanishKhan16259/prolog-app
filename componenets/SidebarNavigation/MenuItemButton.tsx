@@ -6,6 +6,7 @@ type MenuItemProps = {
   // href?: string;
   iconSrc: string;
   onClick: () => void;
+  isCollapsed: boolean;
 };
 
 const ListItem = styled.li`
@@ -21,14 +22,19 @@ const Icon = styled.img`
   margin-right: 12px;
 `;
 
-export function MenuItemButton({ text, onClick, iconSrc }: MenuItemProps) {
+export function MenuItemButton({
+  text,
+  onClick,
+  iconSrc,
+  isCollapsed,
+}: MenuItemProps) {
   return (
     <ListItem>
       {/* Use a div instead of a Link */}
       <div>
         <Button onClick={onClick}>
           <Icon src={iconSrc} alt={`${text} icon`} />
-          {text}
+          {!isCollapsed && text}
         </Button>
       </div>
     </ListItem>
