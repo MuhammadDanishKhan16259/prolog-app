@@ -5,8 +5,9 @@ import { MenuItemButton } from "./MenuItemButton";
 import { Routes } from "../../config/routes";
 import { useRouter } from "next/router";
 import common from "mocha/lib/interfaces/common";
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+// import { NavigationContext } from "@/contexts/Navigation";
+import { NavigationContext } from "../../contexts/Navigation";
 const menuItems = [
   {
     text: "Projects",
@@ -61,20 +62,24 @@ const LinkList = styled(List)`
 `;
 export function SidebarNavigation() {
   const router = useRouter();
-  const [isCollapsed, setCollapsed] = useState(false);
+  // const [isCollapsed, setCollapsed] = useState(false);
+  const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
+
   // console.log(router);
   return (
-    <Nav isCollapsed={isCollapsed}>
+    <Nav isCollapsed={isSidebarCollapsed}>
       <Logo
-        src={isCollapsed ? "/icons/logo-small.svg" : "/icons/logo-large.svg"}
-        isCollapsed={isCollapsed}
+        src={
+          isSidebarCollapsed ? "/icons/logo-small.svg" : "/icons/logo-large.svg"
+        }
+        isCollapsed={isSidebarCollapsed}
       />
       <LinkList>
         {menuItems.map((menuItem, index) => (
           <MenuItemLink
             key={index}
             {...menuItem}
-            isCollapsed={isCollapsed}
+            isCollapsed={isSidebarCollapsed}
             isActive={router.pathname === menuItem.href}
           />
         ))}
@@ -83,14 +88,15 @@ export function SidebarNavigation() {
         <MenuItemButton
           text="Support"
           iconSrc="/icons/support.svg"
-          isCollapsed={isCollapsed}
+          isCollapsed={isSidebarCollapsed}
           onClick={() => alert("Support")}
         />
         <MenuItemButton
           text="Collapse"
           iconSrc="/icons/arrow-left.svg"
-          isCollapsed={isCollapsed}
-          onClick={() => setCollapsed(!isCollapsed)}
+          isCollapsed={isSidebarCollapsed}
+          onClick={() => toggleSidebar()}
+          // onClick={() => setCollapsed(!isCollapsed)}
         />
       </List>
     </Nav>
