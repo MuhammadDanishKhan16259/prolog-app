@@ -11,8 +11,9 @@ export function useRouter() {
 
 export function decorator(
   Story: StoryType,
-  { parameters }: { parameters: Params },
+  { parameters }: { parameters: Params }
 ) {
+  // console.log("router decorator", parameters);
   if (parameters && parameters.route) {
     route = parameters.route;
   }
