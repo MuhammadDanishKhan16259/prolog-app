@@ -5,3 +5,4 @@ describe("Sidebar Navigation", () => {
     cy.get("h1").contains("Welcome to Prolong APP");
   });
 });
+export {};

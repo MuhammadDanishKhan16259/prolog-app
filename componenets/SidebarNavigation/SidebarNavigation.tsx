@@ -34,6 +34,13 @@ const menuItems = [
     href: Routes.settings,
   },
 ];
+
+const Header = styled.header<{ isCollapsed: boolean }>`
+  width: ${(props) => (props.isCollapsed ? "50px" : "248px")};
+  padding: ${({ theme }) =>
+    `${theme.spacing[8]} ${theme.spacing[4]} ${theme.spacing[6]}`};
+  background: ${({ theme }) => theme.colors.gray[900]};
+`;
 const Nav = styled.nav<{ isCollapsed: boolean }>`
   width: ${(props) => (props.isCollapsed ? "50px" : "248px")};
 
@@ -42,7 +49,7 @@ const Nav = styled.nav<{ isCollapsed: boolean }>`
   /* height: calc(100vh - 2 * ${({ theme }) => theme.spacing[3]}; */
   height: calc(100vh - 2 * ${({ theme }) => theme.spacing[8]});
   /* padding: 32px 16px; */
-  padding: ${({ theme }) => `${theme.spacing[8]} ${theme.spacing[4]}`};
+  padding: ${({ theme }) => `0 ${theme.spacing[4]} ${theme.spacing[8]}`};
   display: flex;
   flex-direction: column;
   /* background: #101828; */
@@ -51,7 +58,7 @@ const Nav = styled.nav<{ isCollapsed: boolean }>`
 const Logo = styled.img<{ isCollapsed: boolean }>`
   width: ${(props) => (props.isCollapsed ? "23px" : "118px")};
   /* margin: 0px 12px 24px; */
-  margin: 0 ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[6]}`};
+  margin: 0 ${({ theme }) => `${theme.spacing[3]} `};
 `;
 const List = styled.ul`
   list-style: none;
@@ -67,38 +74,44 @@ export function SidebarNavigation() {
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
 
   return (
-    <Nav isCollapsed={isSidebarCollapsed}>
-      <Logo
-        src={
-          isSidebarCollapsed ? "/icons/logo-small.svg" : "/icons/logo-large.svg"
-        }
-        isCollapsed={isSidebarCollapsed}
-      />
-      <LinkList>
-        {menuItems.map((menuItem, index) => (
-          <MenuItemLink
-            key={index}
-            {...menuItem}
+    <div>
+      <Header isCollapsed={isSidebarCollapsed}>
+        <Logo
+          src={
+            isSidebarCollapsed
+              ? "/icons/logo-small.svg"
+              : "/icons/logo-large.svg"
+          }
+          isCollapsed={isSidebarCollapsed}
+        />
+      </Header>
+      <Nav isCollapsed={isSidebarCollapsed}>
+        <LinkList>
+          {menuItems.map((menuItem, index) => (
+            <MenuItemLink
+              key={index}
+              {...menuItem}
+              isCollapsed={isSidebarCollapsed}
+              isActive={router.pathname === menuItem.href}
+            />
+          ))}
+        </LinkList>
+        <List>
+          <MenuItemButton
+            text="Support"
+            iconSrc="/icons/support.svg"
             isCollapsed={isSidebarCollapsed}
-            isActive={router.pathname === menuItem.href}
+            onClick={() => alert("Support")}
           />
-        ))}
-      </LinkList>
-      <List>
-        <MenuItemButton
-          text="Support"
-          iconSrc="/icons/support.svg"
-          isCollapsed={isSidebarCollapsed}
-          onClick={() => alert("Support")}
-        />
-        <MenuItemButton
-          text="Collapse"
-          iconSrc="/icons/arrow-left.svg"
-          isCollapsed={isSidebarCollapsed}
-          onClick={() => toggleSidebar()}
-        />
-      </List>
-    </Nav>
+          <MenuItemButton
+            text="Collapse"
+            iconSrc="/icons/arrow-left.svg"
+            isCollapsed={isSidebarCollapsed}
+            onClick={() => toggleSidebar()}
+          />
+        </List>
+      </Nav>
+    </div>
   );
 }
 
