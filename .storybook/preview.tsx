@@ -2,16 +2,22 @@ import type { Preview } from "@storybook/react";
 import React from "react";
 import { Story as StoryType } from "@storybook/react";
 import { GlobalStyle } from "../styles/GlobalStyle";
+import { theme } from "../styles/theme";
+// import { GlobalStyle } from "@styles/GlobalStyle";
 import { Story } from "@storybook/react";
 import { NavigationProvider } from "../contexts/Navigation";
+// import { NavigationProvider } from "@contexts/Navigation";
 import { decorator as mockRouterDecorator } from "../__mocks__/next/router";
+import { ThemeProvider } from "styled-components";
 
 export const decorators = [
   (Story: Story) => (
-    <NavigationProvider>
-      <GlobalStyle />
-      <Story />
-    </NavigationProvider>
+    <ThemeProvider theme={theme}>
+      <NavigationProvider>
+        <GlobalStyle />
+        <Story />
+      </NavigationProvider>
+    </ThemeProvider>
   ),
   mockRouterDecorator,
 ];
