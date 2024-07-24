@@ -18,13 +18,8 @@ const ListItem = styled.li<{ isActive: boolean }>`
   height: 51px;
   display: flex;
   align-items: center;
-  /* margin-top: ${(props) => (props.isActive ? "4px" : "0")};
-  margin-top: 4px; */
   margin-top: ${({ theme }) => theme.spacing[1]};
-  /* padding: 0px 12px; */
   padding: 0 ${({ theme }) => theme.spacing[3]};
-  /* background: ${(props) => (props.isActive ? "#344054" : "transparent")}; */
-  /* background: ${(isActive) => (isActive ? "#344054" : "transparent")}; */
   background: ${({ theme, isActive }) =>
     isActive ? theme.colors.gray[700] : "transparent"};
 
@@ -37,12 +32,10 @@ const Anchor = styled.div`
   display: flex;
   align-items: center;
   color: #f2f4f7;
-  /* color: ${(props) => props.theme.colors.gray[100]}; */
   color: ${(props) => props.theme.colors.gray[100]};
   text-decoration: none;
 `;
 const Icon = styled.img`
-  /* margin-right: 12px; */
   margin-right: ${({ theme }) => theme.spacing[3]};
 `;
 
@@ -55,7 +48,6 @@ export function MenuItemLink({
 }: MenuItemProps) {
   return (
     <ListItem isActive={isActive}>
-      {/* Use a div instead of a Link */}
       <div>
         <Anchor>
           <Icon src={iconSrc} alt={`${text} icon`} />
@@ -65,22 +57,3 @@ export function MenuItemLink({
     </ListItem>
   );
 }
-// export function MenuItem({ text, href, iconSrc }: MenuItemProps) {
-//   return (
-//     <ListItem>
-//       <Link href={href} passHref>
-//         <Anchor>
-//           <Icon src={iconSrc} alt={`${text} icon`} />
-//           {text}
-//         </Anchor>
-//       </Link>
-//     </ListItem>
-//   );
-// }
-{
-  /* <Icon src={iconSrc} alt={`${text} icon`} />
-{text} */
-}
-// <li href={index}>
-// <Link href={href}>{text}</Link>
-// </li>

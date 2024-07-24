@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { MenuItemLink } from "./MenuItemLink";
 import { MenuItemButton } from "./MenuItemButton";
 import { Routes } from "../../config/routes";
@@ -34,15 +34,34 @@ const menuItems = [
     href: Routes.settings,
   },
 ];
-
-const Header = styled.header<{ isCollapsed: boolean }>`
-  width: ${(props) => (props.isCollapsed ? "50px" : "248px")};
-  padding: ${({ theme }) =>
-    `${theme.spacing[8]} ${theme.spacing[4]} ${theme.spacing[6]}`};
-  background: ${({ theme }) => theme.colors.gray[900]};
+const Container = styled.div<{ isCollapsed: boolean }>`
+  ${(props) =>
+    props.isCollapsed &&
+    css`
+      ${Header} {
+        width: 50px;
+      }
+      ${Nav} {
+        width: 50px;
+      }
+      ${Logo} {
+        width: 23px;
+    `};
 `;
-const Nav = styled.nav<{ isCollapsed: boolean }>`
-  width: ${(props) => (props.isCollapsed ? "50px" : "248px")};
+const Header = styled.header`
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  background: ${({ theme }) => theme.colors.gray[900]};
+  @media (min-width: 768px) {
+    width: 248px;
+    padding: ${({ theme }) =>
+      `${theme.spacing[8]} ${theme.spacing[4]} ${theme.spacing[6]}`};
+  }
+`;
+const Nav = styled.nav`
+  width: 248px;
   height: calc(100vh - 2 * ${({ theme }) => theme.spacing[8]});
   padding: ${({ theme }) => `0 ${theme.spacing[4]} ${theme.spacing[8]}`};
   display: flex;
@@ -50,7 +69,7 @@ const Nav = styled.nav<{ isCollapsed: boolean }>`
   background: ${({ theme }) => theme.colors.gray[900]};
 `;
 const Logo = styled.img<{ isCollapsed: boolean }>`
-  width: ${(props) => (props.isCollapsed ? "23px" : "118px")};
+  width: 118px;
   margin: 0 ${({ theme }) => `${theme.spacing[3]} `};
 `;
 const List = styled.ul`
@@ -67,8 +86,8 @@ export function SidebarNavigation() {
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
 
   return (
-    <div>
-      <Header isCollapsed={isSidebarCollapsed}>
+    <Container isCollapsed={isSidebarCollapsed}>
+      <Header>
         <Logo
           src={
             isSidebarCollapsed
@@ -78,7 +97,7 @@ export function SidebarNavigation() {
           isCollapsed={isSidebarCollapsed}
         />
       </Header>
-      <Nav isCollapsed={isSidebarCollapsed}>
+      <Nav>
         <LinkList>
           {menuItems.map((menuItem, index) => (
             <MenuItemLink
@@ -104,6 +123,6 @@ export function SidebarNavigation() {
           />
         </List>
       </Nav>
-    </div>
+    </Container>
   );
 }
