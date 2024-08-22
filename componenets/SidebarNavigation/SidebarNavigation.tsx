@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import common from "mocha/lib/interfaces/common";
 import { useContext, useState } from "react";
 import { NavigationContext } from "../../contexts/Navigation";
+import { Button } from "../Button";
 const menuItems = [
   {
     text: "Projects",
@@ -77,8 +78,8 @@ const Logo = styled.img<{ isCollapsed: boolean }>`
     margin: 0 ${({ theme }) => `${theme.spacing[3]} `};
   }
 `;
-const MenuButton = styled.button`
-  cursor: pointer;
+const MenuButton = styled(Button)`
+  /* cursor: pointer;
   //remove default button styles
   border: none;
   margin: 0;
@@ -91,14 +92,14 @@ const MenuButton = styled.button`
   &::-moz-focus-inner {
     border: 0;
     padding: 0;
+  } */
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 
 const MenuIcon = styled.img`
   display: block;
-  @media (min-width: 768px) {
-    display: none;
-  }
 `;
 const List = styled.ul`
   list-style: none;
