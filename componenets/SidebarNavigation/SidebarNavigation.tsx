@@ -118,8 +118,9 @@ const MenuOverlay = styled.nav<{ isMobileMenuOpen: boolean }>`
 const Nav = styled.nav<{ isMobileMenuOpen: boolean }>`
   /* width: calc(100% - ${({ theme }) => theme.spacing[8]}); */
   width: 312px;
-  height: calc(100vh - ${HEADER_HEIGHT} - ${({ theme }) => theme.spacing[8]});
-  padding: ${({ theme }) => `0 ${theme.spacing[4]} ${theme.spacing[8]}`};
+  /* height: calc(100vh - ${HEADER_HEIGHT} - ${({ theme }) =>
+    theme.spacing[8]}); */
+  padding: ${({ theme }) => `0 ${theme.spacing[2]} ${theme.spacing[8]}`};
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -131,6 +132,7 @@ const Nav = styled.nav<{ isMobileMenuOpen: boolean }>`
   transition: transform 300ms;
   @media (min-width: 768px) {
     width: calc(100% - ${({ theme }) => theme.spacing[8]});
+    padding: ${({ theme }) => `0 ${theme.spacing[4]} ${theme.spacing[8]}`};
     transform: none;
   }
 `;
