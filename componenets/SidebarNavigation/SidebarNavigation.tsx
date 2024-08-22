@@ -49,10 +49,11 @@ const Container = styled.div<{ isCollapsed: boolean }>`
     `};
 `;
 const Header = styled.header`
-  width: 100%;
+  width: calc(100% - 2 * ${({ theme }) => theme.spacing[4]});
   height: 64px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 ${({ theme }) => theme.spacing[4]};
   background: ${({ theme }) => theme.colors.gray[900]};
   @media (min-width: 768px) {
@@ -68,11 +69,17 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.colors.gray[900]};
+  transform: translateX(-100%);
 `;
 const Logo = styled.img<{ isCollapsed: boolean }>`
   width: 118px;
   @media (min-width: 768px) {
     margin: 0 ${({ theme }) => `${theme.spacing[3]} `};
+  }
+`;
+const MenuIcon = styled.img`
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 const List = styled.ul`
@@ -98,7 +105,9 @@ export function SidebarNavigation() {
               : "/icons/logo-large.svg"
           }
           isCollapsed={isSidebarCollapsed}
+          alt="logo"
         />
+        <MenuIcon src="/icons/menu.svg" alt="open menu" />
       </Header>
       <Nav>
         <LinkList>
