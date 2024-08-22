@@ -53,6 +53,7 @@ const Header = styled.header`
   height: 64px;
   display: flex;
   align-items: center;
+  padding: 0 ${({ theme }) => theme.spacing[4]};
   background: ${({ theme }) => theme.colors.gray[900]};
   @media (min-width: 768px) {
     width: 248px;
@@ -70,7 +71,9 @@ const Nav = styled.nav`
 `;
 const Logo = styled.img<{ isCollapsed: boolean }>`
   width: 118px;
-  margin: 0 ${({ theme }) => `${theme.spacing[3]} `};
+  @media (min-width: 768px) {
+    margin: 0 ${({ theme }) => `${theme.spacing[3]} `};
+  }
 `;
 const List = styled.ul`
   list-style: none;
