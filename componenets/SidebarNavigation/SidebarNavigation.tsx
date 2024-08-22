@@ -77,7 +77,25 @@ const Logo = styled.img<{ isCollapsed: boolean }>`
     margin: 0 ${({ theme }) => `${theme.spacing[3]} `};
   }
 `;
+const MenuButton = styled.button`
+  cursor: pointer;
+  //remove default button styles
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  line-height: normal;
+  --webkit-font-smoothing: inherit;
+  --moz-osx-font-smoothing: inherit;
+  --webkit-appearance: none;
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+`;
+
 const MenuIcon = styled.img`
+  display: block;
   @media (min-width: 768px) {
     display: none;
   }
@@ -94,6 +112,7 @@ const LinkList = styled(List)`
 export function SidebarNavigation() {
   const router = useRouter();
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <Container isCollapsed={isSidebarCollapsed}>
@@ -107,7 +126,12 @@ export function SidebarNavigation() {
           isCollapsed={isSidebarCollapsed}
           alt="logo"
         />
-        <MenuIcon src="/icons/menu.svg" alt="open menu" />
+        <MenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <MenuIcon
+            src={isMobileMenuOpen ? "/icons/close.svg" : "/icons/menu.svg"}
+            alt="open menu"
+          />
+        </MenuButton>
       </Header>
       <Nav>
         <LinkList>
