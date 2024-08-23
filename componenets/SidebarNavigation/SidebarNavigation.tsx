@@ -41,22 +41,24 @@ const Container = styled.div<{ isCollapsed: boolean }>`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  ${(props) =>
+  /* ${(props) =>
     props.isCollapsed &&
     css`
-      /* ${Header} {
-        width: 50px;
-      }
-      ${Nav} {
-        width: 50px;
-      } */
+      width: 83px;
+
+      ${Logo} {
+        width: 23px;
+    `}; */
+  @media (min-width: 768px) {
+    width: 280px;
+    ${(props) =>
+      props.isCollapsed &&
+      css`
       width: 83px;
 
       ${Logo} {
         width: 23px;
     `};
-  @media (min-width: 768px) {
-    width: 280px;
   }
 `;
 const Header = styled.header`
