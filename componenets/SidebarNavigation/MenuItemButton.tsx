@@ -3,8 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { Button as UnstyledButton } from "../Button";
 type MenuItemProps = {
+  className?: string;
   text: string;
-  // href?: string;
   iconSrc: string;
   onClick: () => void;
   isCollapsed: boolean;
@@ -24,13 +24,14 @@ const Icon = styled.img`
 `;
 
 export function MenuItemButton({
+  className,
   text,
   onClick,
   iconSrc,
   isCollapsed,
 }: MenuItemProps) {
   return (
-    <ListItem>
+    <ListItem className={className}>
       {/* Use a div instead of a Link */}
       <div>
         <Button onClick={onClick}>
