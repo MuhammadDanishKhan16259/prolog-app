@@ -174,7 +174,7 @@ export function SidebarNavigation() {
         <MenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <MenuIcon
             src={isMobileMenuOpen ? "/icons/close.svg" : "/icons/menu.svg"}
-            alt="open menu"
+            alt={isMobileMenuOpen ? "close menu" : "open menu"}
           />
         </MenuButton>
       </Header>
