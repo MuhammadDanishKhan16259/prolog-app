@@ -29,4 +29,16 @@ export const theme = {
     20: "5rem",
     24: "6rem",
   },
+  breakpoint: {
+    desktop: "64em",
+  },
+  zIndex: {
+    header: 1000,
+  },
 };
+// export function color() {
+//   return false;
+// }
+// export function space() {
+//   return false;
+// }
